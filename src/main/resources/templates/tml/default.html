@@ -1,0 +1,75 @@
+<!doctype html>
+
+<html> 
+<head>
+	<title>Submit</title>
+	<link rel="stylesheet" href="http://localhost:8080/css/styles.css">
+</head>
+
+
+<body> 
+	
+  <h2>Timeless</h2>
+
+
+ <form method="post" action="/update">
+ 
+  <br>
+   <label for="day_of">Week of</label>
+   <label for="day_mo">Monday</label>
+   <label for="day_tu">Tuesday</label>
+   <label for="day_we">Wednesday</label>
+   <label for="day_th">Thursday</label>
+   <label for="day_fr">Friday</label> 
+   <label for="total">Total</label> 
+  <br>	
+	<input id="day_of"    type="date"   name="week_date"   value="{{week_d}}" autofocus required>
+	
+	<input class="day_w"  type="number"  name="hour_week"   value="{{mon}}"  step="any"  min="0"  required>
+	<input class="day_w"  type="number"  name="hour_week"   value="{{tue}}"  step="0"    required>
+	<input class="day_w"  type="number"  name="hour_week"   value="{{wed}}"  step="0"    required>
+	<input class="day_w"  type="number"  name="hour_week"   value="{{thu}}"  step="0"    required>
+	<input class="day_w"  type="number"  name="hour_week"   value="{{fri}}"  step="0"    required>
+	
+	<input class="total"  type="text"  name="total"       value="{{total}}"  step="0"  required disabled>
+	
+    <button  class="btns"   name="action"  value="update"  title="sss">UPDATE</button>
+    <button  class="btns"   name="action"  value="submit"  title="sss">SUBMIT</button>	
+  </form>	
+
+
+
+ <form method="post" action="/submit"> 
+ </form>   
+ 
+  <br>	
+  <br>	
+  <br>	
+  {{#visibilitySubmData}}
+	<table>	
+	    <thead>
+		    <tr>
+		        <th> <label>Week of</label>  </th>
+		        <th> <label>Monday</label>   </th>
+		        <th> <label>Tuesday</label>  </th>
+		        <th> <label>Wednesday</label></th>
+		        <th> <label>Thursday</label> </th>
+		        <th> <label>Friday</label>   </th>
+		    </tr>
+	    </thead>
+		    <tbody>	
+	    		<tr>
+			    	{{#ListOfEntries}}
+		    			<td> {{ . }} </td>
+			    	{{/ListOfEntries}}
+		    	</tr>
+		    </tbody>      
+ </table>
+  {{/visibilitySubmData}}
+
+ 	    
+
+
+		 
+ </body>
+</html>
