@@ -34,12 +34,10 @@ public class TimeUpdate {
 	
 	
 
-	public List<List<String>> getAllRecords(ArrayList<List<String>> listRecords, String[] record)
-	{		
-		//List<List<String>> listRecords = new ArrayList<List<String>>();		
-		listRecords.add(Arrays.asList(record));
-		
-		return listRecords;
+	public ArrayList<ArrayList<String>> getAllRecords(ArrayList<String> record, ArrayList<ArrayList<String>> rec)
+	{	
+		rec.add(new ArrayList<>(record));	
+		return rec;
 	}
 	
 

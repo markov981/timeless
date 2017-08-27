@@ -47,6 +47,7 @@
   <br>	
   {{#visibilitySubmData}}
 	<table>	
+	{{#ListOfEntries}}
 	    <thead>
 		    <tr>
 		        <th> <label>Week of</label>  </th>
@@ -59,14 +60,31 @@
 	    </thead>
 		    <tbody>	
 	    		<tr>
-			    	{{#ListOfEntries}}
+			    	{{#.}}
 		    			<td> {{ . }} </td>
-			    	{{/ListOfEntries}}
+			    	{{/.}}
 		    	</tr>
-		    </tbody>      
+		    </tbody>  
+	{{/ListOfEntries}}     
  </table>
   {{/visibilitySubmData}}
 
+ <!--  
+ <table>
+	{{#ListOfEntries}}
+		<tr>
+			{{#.}}
+				<td>{{ . }}</td>
+			{{/.}}
+		</tr>
+	{{/ListOfEntries}}
+</table>
+-->
+ 
+ 
+ 
+ 
+ 
  	    
 
 

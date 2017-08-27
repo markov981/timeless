@@ -15,6 +15,7 @@ import com.libertymutual.goforcode.timeless.models.TimeUpdate;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -36,8 +37,8 @@ public class TimelessController
 	
 	// List of ArrayLists
 	Record rec = new Record();
-	ArrayList<List<String>> listRecords = new ArrayList<List<String>>();
-	
+	ArrayList<ArrayList<String>> listRecords = new ArrayList<ArrayList<String>>();
+	int i = 0; // Record number in the list of lists 
 	
 	
 	@GetMapping("")    
@@ -76,7 +77,9 @@ public class TimelessController
 			
 			// Record rec = new Record();
 	        // List<String> items = upd.getAllRecords(rec.convertRecordToList(hour_week, total, dateW));
-			List<List<String>> items = upd.getAllRecords(listRecords, rec.convertRecordToList(hour_week, total, dateW));
+			ArrayList<ArrayList<String>> items = 
+					upd.getAllRecords(rec.convertRecordToList(hour_week, total, dateW), listRecords);
+			//List<List<String>> items = upd.getAllRecords(rec.convertRecordToList(hour_week, total, dateW));
 	        model.addAttribute("ListOfEntries", items);
 	        
 	        
