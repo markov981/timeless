@@ -35,10 +35,10 @@ public class TimelessController
 	String pattern = "MM/dd/yyyy";
 	SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
 	
-	// List of ArrayLists
+	// List of ArrayList-s
 	Record rec = new Record();
 	ArrayList<ArrayList<String>> listRecords = new ArrayList<ArrayList<String>>();
-	int i = 0; // Record number in the list of lists 
+	
 	
 	
 	@GetMapping("")    
@@ -47,8 +47,7 @@ public class TimelessController
 		model.addAttribute("visibilitySubmData", false);
 		return "tml/default";  }
 
-	
-	 
+		 
 	@PostMapping("/update")
 	public String update(Model model, double[] hour_week, Date week_date, String action) throws IOException {
 		
@@ -73,19 +72,17 @@ public class TimelessController
 			upd.getUpdateData(hour_week, week_date, submData);
 			upd.persistDailyHours(model, hour_week, total, dateW);
 			
-			// List<String[]>   List<List<String>> csvList = new ArrayList<List<String>>();
+			
 			
 			// Record rec = new Record();
-	        // List<String> items = upd.getAllRecords(rec.convertRecordToList(hour_week, total, dateW));
 			ArrayList<ArrayList<String>> items = 
-					upd.getAllRecords(rec.convertRecordToList(hour_week, total, dateW), listRecords);
-			//List<List<String>> items = upd.getAllRecords(rec.convertRecordToList(hour_week, total, dateW));
+			upd.getAllRecords(rec.convertRecordToList(hour_week, total, dateW), listRecords);
 	        model.addAttribute("ListOfEntries", items);
 	        
 	        
 			// send to the form
-			total = upd.sumDailyHoursForTotal(submData);
-			upd.submitWeeklyHours(model, submData, total, dateW);
+			//total = upd.sumDailyHoursForTotal(submData);
+			//upd.submitWeeklyHours(model, submData, total, dateW);
 			
 			
 			// print to a file

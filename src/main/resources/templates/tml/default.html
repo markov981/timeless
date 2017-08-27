@@ -45,9 +45,9 @@
   <br>	
   <br>	
   <br>	
-  {{#visibilitySubmData}}
+    {{#visibilitySubmData}}
 	<table>	
-	{{#ListOfEntries}}
+
 	    <thead>
 		    <tr>
 		        <th> <label>Week of</label>  </th>
@@ -56,8 +56,10 @@
 		        <th> <label>Wednesday</label></th>
 		        <th> <label>Thursday</label> </th>
 		        <th> <label>Friday</label>   </th>
+		        <th> <label>Total</label>   </th>
 		    </tr>
 	    </thead>
+	{{#ListOfEntries}}	    
 		    <tbody>	
 	    		<tr>
 			    	{{#.}}
@@ -67,7 +69,7 @@
 		    </tbody>  
 	{{/ListOfEntries}}     
  </table>
-  {{/visibilitySubmData}}
+ {{/visibilitySubmData}}
 
  <!--  
  <table>

@@ -21,8 +21,7 @@ public class TimeUpdate {
 	
 	
 	
-	public double sumDailyHoursForTotal(double[] weeklyHours) 
-	{	
+	public double sumDailyHoursForTotal(double[] weeklyHours) {	
 		double hours = 0; 
 		
 		for(int i = 0; i < weeklyHours.length; i++) {
@@ -34,8 +33,7 @@ public class TimeUpdate {
 	
 	
 
-	public ArrayList<ArrayList<String>> getAllRecords(ArrayList<String> record, ArrayList<ArrayList<String>> rec)
-	{	
+	public ArrayList<ArrayList<String>> getAllRecords(ArrayList<String> record, ArrayList<ArrayList<String>> rec){	
 		rec.add(new ArrayList<>(record));	
 		return rec;
 	}
@@ -48,8 +46,7 @@ public class TimeUpdate {
 //	}	
 	
 	
-	public void initializeDailyHours(Model model, double num, String week_d) 
-	{			
+	public void initializeDailyHours(Model model, double num, String week_d) {			
 		model.addAttribute("mon", num);
 		model.addAttribute("tue", num);
 		model.addAttribute("wed", num);
@@ -62,37 +59,35 @@ public class TimeUpdate {
 
 	
 	
-	public void persistDailyHours(Model model, double[] hour_week, double total, String week_d) 
-	{		
+	public void persistDailyHours(Model model, double[] hour_week, double total, String week_d) {
+		
+		model.addAttribute("week_d", week_d);
 		model.addAttribute("mon", hour_week[0]);
 		model.addAttribute("tue", hour_week[1]);
 		model.addAttribute("wed", hour_week[2]);
 		model.addAttribute("thu", hour_week[3]);
 		model.addAttribute("fri", hour_week[4]);
+		model.addAttribute("total", total);	
 
-		model.addAttribute("monday", hour_week[0]);
-		model.addAttribute("tuesday", hour_week[1]);
-		model.addAttribute("wednesday", hour_week[2]);
-		model.addAttribute("thursday", hour_week[3]);
-		model.addAttribute("friday", hour_week[4]);	
-		
-		model.addAttribute("total", total);
-		
-		model.addAttribute("week_d", week_d);
+//		model.addAttribute("monday", hour_week[0]);
+//		model.addAttribute("tuesday", hour_week[1]);
+//		model.addAttribute("wednesday", hour_week[2]);
+//		model.addAttribute("thursday", hour_week[3]);
+//		model.addAttribute("friday", hour_week[4]);			
+
 	}
 	
 	
 	
-	public void submitWeeklyHours(Model model, double[] WeekHours, double total, String week_of) 
-	{	
-		model.addAttribute("week_of", week_of);
+	public void submitWeeklyHours(Model model, double[] WeekHours, double total, String week_of) {	
+//		model.addAttribute("week_of", week_of);
 		model.addAttribute("week_d", "");
 		
-		model.addAttribute("monday", WeekHours[0]);
-		model.addAttribute("tuesday", WeekHours[1]);
-		model.addAttribute("wednesday", WeekHours[2]);
-		model.addAttribute("thursday", WeekHours[3]);
-		model.addAttribute("friday", WeekHours[4]);	
+//		model.addAttribute("monday", WeekHours[0]);
+//		model.addAttribute("tuesday", WeekHours[1]);
+//		model.addAttribute("wednesday", WeekHours[2]);
+//		model.addAttribute("thursday", WeekHours[3]);
+//		model.addAttribute("friday", WeekHours[4]);	
 		
 		model.addAttribute("mon", 0);
 		model.addAttribute("tue", 0);
@@ -100,10 +95,7 @@ public class TimeUpdate {
 		model.addAttribute("thu", 0);
 		model.addAttribute("fri", 0);
 		
-		model.addAttribute("total", 0);
-		
-		
-	}
+		model.addAttribute("total", 0);}
 
 	
 	
@@ -115,13 +107,4 @@ public class TimeUpdate {
 		return WeekHrs;
 	}
 }
-
-//<!--     
-//{{#bookList}}
-//{{#visibility}} 
-//-->  
-//
-//<!--     
-//{{/visibility}}
-//{{/bookList}} 
-//-->  
+  
