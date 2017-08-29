@@ -15,7 +15,7 @@ public class TimeUpdate {
 	
 	private double hoursPerWeek; 
 	
-	// ????
+	// two Constructors
 	public TimeUpdate() {}
 	public TimeUpdate(Model model, double num, String w_d) { initializeDailyHours(model, num, w_d); }
 	
@@ -59,35 +59,20 @@ public class TimeUpdate {
 
 	
 	
-	public void persistDailyHours(Model model, double[] hour_week, double total, String week_d) {
-		
+	public void persistDailyHours(Model model, double[] hour_week, double total, String week_d) {		
 		model.addAttribute("week_d", week_d);
 		model.addAttribute("mon", hour_week[0]);
 		model.addAttribute("tue", hour_week[1]);
 		model.addAttribute("wed", hour_week[2]);
 		model.addAttribute("thu", hour_week[3]);
 		model.addAttribute("fri", hour_week[4]);
-		model.addAttribute("total", total);	
-
-//		model.addAttribute("monday", hour_week[0]);
-//		model.addAttribute("tuesday", hour_week[1]);
-//		model.addAttribute("wednesday", hour_week[2]);
-//		model.addAttribute("thursday", hour_week[3]);
-//		model.addAttribute("friday", hour_week[4]);			
-
+		model.addAttribute("total", total);			
 	}
 	
 	
 	
-	public void submitWeeklyHours(Model model, double[] WeekHours, double total, String week_of) {	
-//		model.addAttribute("week_of", week_of);
+	public void clearCurrentEntry(Model model, double[] WeekHours, double total, String week_of) {	
 		model.addAttribute("week_d", "");
-		
-//		model.addAttribute("monday", WeekHours[0]);
-//		model.addAttribute("tuesday", WeekHours[1]);
-//		model.addAttribute("wednesday", WeekHours[2]);
-//		model.addAttribute("thursday", WeekHours[3]);
-//		model.addAttribute("friday", WeekHours[4]);	
 		
 		model.addAttribute("mon", 0);
 		model.addAttribute("tue", 0);
@@ -95,7 +80,8 @@ public class TimeUpdate {
 		model.addAttribute("thu", 0);
 		model.addAttribute("fri", 0);
 		
-		model.addAttribute("total", 0);}
+		model.addAttribute("total", 0);
+		}
 
 	
 	

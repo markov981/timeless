@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.libertymutual.goforcode.timeless.models.FilePrinter;
 import com.libertymutual.goforcode.timeless.models.Record;
@@ -15,10 +14,7 @@ import com.libertymutual.goforcode.timeless.models.TimeUpdate;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
-
 
 
 @Controller
@@ -43,47 +39,43 @@ public class TimelessController
 	
 	@GetMapping("")    
 	public String index(Model model)   { 		
-		TimeUpdate upd = new TimeUpdate(model,  0, "");   // ??????
+		TimeUpdate upd = new TimeUpdate(model,  0, "");   
 		model.addAttribute("visibilitySubmData", false);
-		return "tml/default";  }
+		return "tml/default";  
+		}
 
 		 
 	@PostMapping("/update")
 	public String update(Model model, double[] hour_week, Date week_date, String action) throws IOException {
 		
 		WeekDate = week_date; 
-		dateW = simpleDateFormat.format(week_date);		
+		dateW = simpleDateFormat.format(week_date);	
+		
 		TimeUpdate upd = new TimeUpdate();
+		upd.getUpdateData(hour_week, week_date, submData);
+		
 		total = upd.sumDailyHoursForTotal(hour_week);
 		
 		
-		// Updates 'Total'		
+		// Update		
 		if (action.equals("update")) {
 			model.addAttribute("visibilitySubmData", false);
 								
-			upd.getUpdateData(hour_week, week_date, submData);					
+			//upd.getUpdateData(hour_week, week_date, submData);					
 			upd.persistDailyHours(model, hour_week, total, dateW);
 		} 
 		
+		// Submit
 		else if (action.equals("submit")) {
 			
-			model.addAttribute("visibilitySubmData", true);
-			
-			upd.getUpdateData(hour_week, week_date, submData);
+			model.addAttribute("visibilitySubmData", true);			
+			//upd.getUpdateData(hour_week, week_date, submData);
 			upd.persistDailyHours(model, hour_week, total, dateW);
-			
-			
-			
-			// Record rec = new Record();
+						
 			ArrayList<ArrayList<String>> items = 
 			upd.getAllRecords(rec.convertRecordToList(hour_week, total, dateW), listRecords);
 	        model.addAttribute("ListOfEntries", items);
-	        
-	        
-			// send to the form
-			//total = upd.sumDailyHoursForTotal(submData);
-			//upd.submitWeeklyHours(model, submData, total, dateW);
-			
+	        upd.clearCurrentEntry(model, submData, total, dateW);
 			
 			// print to a file
 			FilePrinter prnt = new FilePrinter("tm.csv"); 
@@ -92,7 +84,6 @@ public class TimelessController
 		
 		return "tml/default";
 	}
-
 }
 
 

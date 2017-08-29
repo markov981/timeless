@@ -19,11 +19,6 @@ public class Record {
 				rec[i] = String.valueOf(hour_week[i - 1]);
 			
 			ArrayList<String> recList = new ArrayList<>(Arrays.asList(rec));
-			
-			
-//			for (int i = 0; i < rec.length; i += 1) {
-//				if (rec[i] == null) rec[i] = "";
-//			}
 					
 	return recList;	
 	}
